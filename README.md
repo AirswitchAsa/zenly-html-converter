@@ -4,7 +4,7 @@ Python scripts for converting HTML files exported from Zenly, an app which recen
 
 The kml format is introduced by google as a simple encoding for displaying geological data: https://developers.google.com/kml/documentation
 
-Note that applications like fog of world requires all geocoding data to be defined as tracks in order to display. Therefore I am using `LineString` in kml to define each day as a track from the HTML files.
+Note that applications like Fog of World require all geocoding data to be defined as tracks in order to display. Therefore I am using `LineString` in kml to define each day as a track from the HTML files. This converter may work for other applications, but I only tested it on Fog of World
 
 ### requirements
 note: I am not testing specific versions on these packages.
