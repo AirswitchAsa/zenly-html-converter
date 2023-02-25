@@ -1,6 +1,6 @@
 # zenly-html-converter
 
-Python scripts for converting HTML files exported from Zenly, an app which recently bought by Snap and confirmed end of service to more general geocoding formats. I am supporting the conversion from zenly HTML to kml format, which is used by another application Fog of World supports for imports.
+Python scripts for converting HTML files exported from Zenly, an app which recently bought by Snap and confirmed end of service to more general geocoding formats. I am supporting the conversion from zenly HTML to kml format, which is used by another application Fog of World for imports.
 
 The kml format is introduced by google as a simple encoding for displaying geological data: https://developers.google.com/kml/documentation
 
