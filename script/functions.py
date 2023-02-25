@@ -54,13 +54,17 @@ def convert_file_to_dict(file_path, utc_date):
     
 def save_day_kml(day, date):
     kml = simplekml.Kml()
+    coords = []
+    location = None
+    timestamp = None
     for line in day:
         location = line['country']
         latitude = line['latitude'].split(' ')[0]
         longitude = line['longitude'].split(' ')[0]
         altitude = line['altitude']
         timestamp = simplekml.TimeStamp(when=line['utc_datetime'])
-        kml.newpoint(name = location, coords=[(latitude, longitude, altitude)], timestamp=timestamp)
+        coords.append((longitude, latitude, altitude))
+    kml.newlinestring(name = location, coords=coords, timestamp=timestamp)
     kml.save(f'./out/{date}.kml')
 
 def save_all_kml(file_paths, file_names):
@@ -68,11 +72,15 @@ def save_all_kml(file_paths, file_names):
     for file_path, file_name in zip(file_paths, file_names):
         date = file_name.split('.')[0]
         day = convert_file_to_dict(file_path, date)
+        coords = []
+        location = None
+        timestamp = None
         for line in day:
             location = line['country']
             latitude = line['latitude'].split(' ')[0]
             longitude = line['longitude'].split(' ')[0]
             altitude = line['altitude']
+            coords.append((longitude, latitude, altitude))
             timestamp = simplekml.TimeStamp(when=line['utc_datetime'])
-            kml.newpoint(name = location, coords=[(latitude, longitude, altitude)], timestamp=timestamp)
+        kml.newlinestring(name = location, coords=coords, timestamp=timestamp)
     kml.save('./out/all.kml')
